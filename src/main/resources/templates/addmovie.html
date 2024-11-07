@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add movie</title>
+</head>
+<body>
+    <h1>Add movie</h1>
+    <div>
+        <form th:object="${movie}" th:action="@{/savemovie}" action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}" />
+            <label for="length">Length</label>
+            <input type="text" id="length" th:field="*{length}" />
+            <label for="ageLimit">Age Limit</label>
+            <input type="number" th:field="*{ageLimit}" />
+            <label for="categorylist">Category</label>
+                <select id="categorylist" th:field="*{category}" class="form-control">
+                    <option th:each="category: ${category}"
+                        th:value="${category.categoryId}"
+                        th:text="${category.name}"></option>
+                </select>
+            <input type="submit" value="Save"></input>
+        </form>
+    </div>
+</body>
+</html>

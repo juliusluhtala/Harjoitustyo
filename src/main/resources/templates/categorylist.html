@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Categories</h1>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.categoryId}"></td>
+                <td th:text="${category.name}"></td>
+                <td sec:authorize="hasAuthority('ADMIN')">
+                    <a th:href="@{/deletecategory/{id}(id=${category.categoryId})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/editcategory/{id}(id=${category.categoryId})}" class="btn btn-success">Edit</a>
+            </td>
+            </tr>
+        </table>
+        <td sec:authorize="hasAuthority('ADMIN')">
+            <a href="/addcategory" class="btn btn-success">Add Category</a>
+            <a href="/movielist" class="btn btn-success">Movies</a>
+        </td>
+    </div>
+</body>
+</html>
