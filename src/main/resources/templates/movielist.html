@@ -14,7 +14,7 @@
             </div>
             <div style="padding:10px 0">
                 <td sec:authorize="hasAuthority('ADMIN')">
-                    <a th:href="@{/appuser/{id}(id=${appuser.id})}" class="btn btn-sm btn-primary">Profile</a>
+                    <a href="@{/appuser/{id}(id=${appuser.id})}" class="btn btn-sm btn-primary">Profile</a>
                 </td>
                 <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()" style="padding:10px 0">
                     <input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
